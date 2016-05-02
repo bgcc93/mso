@@ -4,6 +4,20 @@
 *.o
 *.obj
 
+#VS stuff
+*.sdf
+*.sln
+*.suo
+*.ilk
+*.pdb
+*.vcxproj
+*.vcxproj.filters
+*.tlog
+*.lastbuildstate
+*.log
+*.idb
+*.pdb
+
 # Precompiled Headers
 *.gch
 *.pch
