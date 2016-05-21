@@ -156,4 +156,35 @@ public:
 
 		return functionArea;
 	}
+	double round(double value, int precision){
+		int adjustment = pow(10,precision);
+		return floor( value*(adjustment) + 0.5 )/adjustment;
+	}
+	double SearchX(double p, int dof, double error){
+		double step = 1;
+		double x = 1;
+		bool add = false;
+		bool subtract = false;
+		double area = 0;
+		do{
+			area = CalculateFunctionArea(0,x,dof,20,error,Calculations::IntegrateDistributionT);
+			if( area > p ){
+				if(add){
+					step /= 2;
+					add = false;
+				}
+				x -= step;
+				subtract = true;
+			}else if ( area < p ){				
+				if(subtract){
+					step /= 2;
+					subtract = false;
+				}
+				x += step;
+				add = true;
+			}
+			
+		}while( round(area,4) != round(p,4) );
+		return x;
+	}
 };
